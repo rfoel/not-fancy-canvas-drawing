@@ -1,0 +1,17 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "plugins": ["prettier"],
+  "rules": {
+    "no-unused-expressions": ["error", {
+      "allowTaggedTemplates": true
+    }],
+    "prettier/prettier": ["error"],
+    "react/jsx-filename-extension": false,
+    "react/jsx-one-expression-per-line": false
+  }
+}
