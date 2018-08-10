@@ -1,11 +1,9 @@
 {
   "name": "not-fancy-canvas-drawing",
   "version": "0.1.0",
-  "homepage": "https://rfoel.github.io/not-fancy-canvas-drawing/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
