@@ -2,17 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 const CanvasWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-
-  canvas {
-    border: 1px dashed #eee;
-    width: 400px;
-    height: 400px;
-  }
+  border: 2px solid #eee;
 `;
 
 class Canvas extends Component {
@@ -60,6 +50,8 @@ class Canvas extends Component {
     return (
       <CanvasWrapper>
         <canvas
+          width="300"
+          height="300"
           ref={this.canvas}
           onMouseDown={e => this.handleOnMouseDown(e)}
           onMouseMove={e => this.handleOnMouseMove(e)}
