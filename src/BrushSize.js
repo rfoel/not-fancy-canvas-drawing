@@ -45,7 +45,8 @@ const ButtonsWrapper = styled.div`
 
 const StyledButton = styled.button`
   display: inline-block;
-  padding: 5px 10px;
+  height: 35px;
+  width: 35px;
   border: 2px solid #eee;
   margin: 0 14px;
   outline: none;
