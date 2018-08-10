@@ -14,7 +14,7 @@ const ColorsWrapper = styled.div`
 const Color = styled.button`
   width: 20px;
   height: 20px;
-  margin: 0 10px;
+  margin: 0 px;
   border: 2px solid #eee;
   outline: none;
   cursor: pointer;
@@ -26,7 +26,7 @@ const Color = styled.button`
 
 class Colors extends Component {
   state = {
-    colors: ['#0a0a0a', '#209cee', '#23d160', '#ffdd57', '#ff3860']
+    colors: ['#ffffff', '#0a0a0a', '#209cee', '#23d160', '#ffdd57', '#ff3860']
   };
 
   render() {
