@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const CanvasWrapper = styled.div`
@@ -22,14 +23,15 @@ const StyledCursor = styled.div`
   width: 10px;
   height: 10px;
   box-sizing: content-box;
-  border-radius: 50%;
   border: 2px solid #eee;
   pointer-events: none;
   user-select: none;
   cursor: none;
-  background: #000;
   opacity: 0;
   transition: opacity 100ms;
+  background: ${prop => prop.background};
+
+  ${prop => prop.round && 'border-radius: 50%;'};
 `;
 
 class Canvas extends Component {
@@ -57,6 +59,8 @@ class Canvas extends Component {
   };
 
   handleOnMouseMove = event => {
+    const { brush, selectedColor } = this.props;
+
     event.persist();
     const { offsetX, offsetY, isDrawing } = this.state;
     const x = event.pageX - event.target.offsetLeft;
@@ -65,9 +69,9 @@ class Canvas extends Component {
     this.cursor.current.style.left = `${event.pageX - 7}px`;
     if (!isDrawing) return;
     const ctx = this.canvas.current.getContext('2d');
-    ctx.strokeStyle = '#000000';
-    ctx.lineJoin = 'round';
-    ctx.lineCap = 'round';
+    ctx.strokeStyle = selectedColor;
+    ctx.lineJoin = brush;
+    ctx.lineCap = brush;
     ctx.lineWidth = 10;
     ctx.beginPath();
     ctx.moveTo(offsetX, offsetY);
@@ -80,6 +84,7 @@ class Canvas extends Component {
   };
 
   render() {
+    const { brush, selectedColor } = this.props;
     return (
       <CanvasWrapper>
         <canvas
@@ -91,10 +96,15 @@ class Canvas extends Component {
           onMouseUp={e => this.handleOnMouseUp(e)}
           onMouseLeave={e => this.handleOnMouseUp(e)}
         />
-        <StyledCursor innerRef={this.cursor} />
+        <StyledCursor round={brush === 'round'} background={selectedColor} innerRef={this.cursor} />
       </CanvasWrapper>
     );
   }
 }
+
+Canvas.propTypes = {
+  brush: PropTypes.string.isRequired,
+  selectedColor: PropTypes.string.isRequired
+};
 
 export default Canvas;

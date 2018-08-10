@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
 import Canvas from './Canvas';
@@ -15,19 +15,44 @@ const AppWrapper = styled.div`
 `;
 
 const OptionsWrapper = styled.div`
-  width: 300px;
   display: flex;
-  justify-content: space-around;
+  width: 400px;
+  > div {
+    flex: 1;
+  }
 `;
 
-const App = () => (
-  <AppWrapper>
-    <Canvas />
-    <OptionsWrapper>
-      <Brushes />
-      <Colors />
-    </OptionsWrapper>
-  </AppWrapper>
-);
+class App extends Component {
+  state = {
+    selectedColor: '#0a0a0a',
+    brush: 'square'
+  };
+
+  handleBrushChange = brush => {
+    this.setState({ brush });
+  };
+
+  handleSelectedColorChange = selectedColor => {
+    this.setState({ selectedColor });
+  };
+
+  render() {
+    const { brush, selectedColor } = this.state;
+
+    return (
+      <AppWrapper>
+        <Canvas brush={brush} selectedColor={selectedColor} />
+        <OptionsWrapper>
+          <Brushes brush={brush} onBrushChange={this.handleBrushChange} />
+          <Colors
+            brush={brush}
+            selectedColor={selectedColor}
+            onSelectedColorChange={this.handleSelectedColorChange}
+          />
+        </OptionsWrapper>
+      </AppWrapper>
+    );
+  }
+}
 
 export default App;

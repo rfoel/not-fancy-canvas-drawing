@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ColorsWrapper = styled.div`
@@ -13,8 +14,14 @@ const ColorsWrapper = styled.div`
 const Color = styled.button`
   width: 20px;
   height: 20px;
-  border: 0;
+  margin: 0 10px;
+  border: 2px solid #eee;
+  outline: none;
+  cursor: pointer;
   background: ${prop => prop.color};
+
+  ${prop => prop.round && 'border-radius: 50%;'};
+  ${prop => prop.active && 'border-color: #aaa;'};
 `;
 
 class Colors extends Component {
@@ -24,15 +31,29 @@ class Colors extends Component {
 
   render() {
     const { colors } = this.state;
+    const { selectedColor, onSelectedColorChange, brush } = this.props;
+
     return (
       <ColorsWrapper>
         <h2>Colors</h2>
         {colors.map(color => (
-          <Color color={color} />
+          <Color
+            active={selectedColor === color}
+            onClick={() => onSelectedColorChange(color)}
+            key={color}
+            color={color}
+            round={brush === 'round'}
+          />
         ))}
       </ColorsWrapper>
     );
   }
 }
+
+Colors.propTypes = {
+  brush: PropTypes.string.isRequired,
+  selectedColor: PropTypes.string.isRequired,
+  onSelectedColorChange: PropTypes.func.isRequired
+};
 
 export default Colors;
