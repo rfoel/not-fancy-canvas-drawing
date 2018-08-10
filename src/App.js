@@ -18,6 +18,13 @@ const AppWrapper = styled.div`
     color: #aaa;
     font-size: 2rem;
     text-align: center;
+    margin-bottom: 10px;
+  }
+
+  a {
+    color: #aaa;
+    text-decoration: none;
+    margin-bottom: 10px;
   }
 `;
 
@@ -77,6 +84,13 @@ class App extends Component {
             onBrushSizeChange={this.handleBrushSizeChange}
           />
         </OptionsWrapper>
+        <a
+          href="https://github.com/rfoel/not-fancy-canvas-drawing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          &lt;/ &gt; by rfoel
+        </a>
       </AppWrapper>
     );
   }
