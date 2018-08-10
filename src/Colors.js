@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const ColorsWrapper = styled.div`
+  text-align: center;
+
   h2 {
     flex: 1;
     color: #aaa;
@@ -14,7 +16,7 @@ const ColorsWrapper = styled.div`
 const Color = styled.button`
   width: 20px;
   height: 20px;
-  margin: 0 px;
+  margin: 0 6px;
   border: 2px solid #eee;
   outline: none;
   cursor: pointer;

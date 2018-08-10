@@ -14,7 +14,7 @@ const BrushesWrapper = styled.div`
   }
 `;
 
-const SquareBrush = styled.button`
+export const SquareBrush = styled.button`
   display: inline-block;
   width: 20px;
   height: 20px;
@@ -22,6 +22,7 @@ const SquareBrush = styled.button`
   margin: 0 10px;
   outline: none;
   cursor: pointer;
+  padding: 0;
 
   &:hover {
     border-color: #ccc;
@@ -30,7 +31,7 @@ const SquareBrush = styled.button`
   ${prop => prop.active && 'border-color: #aaa;'};
 `;
 
-const RoundBrush = styled(SquareBrush)`
+export const RoundBrush = styled(SquareBrush)`
   border-radius: 50%;
 `;
 
